@@ -14,9 +14,11 @@ RUN curl -o go1.8.1.linux-amd64.tar.gz https://storage.googleapis.com/golang/go1
 ENV PATH /usr/local/go/bin:$PATH
 ENV GOPATH /usr/local/YTSpectrogram/
 
-RUN git clone https://github.com/samling/YTSpectrogram.git /usr/local/YTSpectrogram \
+RUN git clone https://github.com/samling/YTSpectrogram-Sampler.git /usr/local/YTSpectrogram \
     && cd /usr/local/YTSpectrogram \
     && go get github.com/mdlayher/waveform \
+    && go get github.com/go-sql-driver/mysql \
+    && go get github.com/jmoiron/sqlx \
     && go build YTSpectrogram
 
 COPY ./entrypoint.sh /usr/local/entrypoint.sh
